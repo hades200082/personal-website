@@ -5,7 +5,7 @@ FROM base as builder
 WORKDIR /home/node/app
 COPY leeconlin-co-uk-cms/package*.json ./
 
-COPY . .
+COPY leeconlin-co-uk-cms .
 RUN npm ci
 RUN npm run build
 
