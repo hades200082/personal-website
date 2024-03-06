@@ -3,9 +3,9 @@ FROM node:current-alpine as base
 FROM base as builder
 
 WORKDIR /home/node/app
-COPY leeconlin-co-uk-cms/package*.json ./
+COPY package*.json ./
 
-COPY leeconlin-co-uk-cms .
+COPY ./ .
 RUN npm ci
 RUN npm run build
 
@@ -15,7 +15,7 @@ ENV NODE_ENV=production
 ENV PAYLOAD_CONFIG_PATH=dist/payload.config.js
 
 WORKDIR /home/node/app
-COPY leeconlin-co-uk-cms/package*.json  ./
+COPY package*.json  ./
 
 RUN npm ci
 COPY --from=builder /home/node/app/dist ./dist
